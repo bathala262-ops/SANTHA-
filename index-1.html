@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SANTHA Market — India's Trusted Digital Sheep Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1B5E20;
+  --forest-dark:#123D15;
+  --forest-light:#2E7D32;
+  --gold:#F9A825;
+  --gold-dark:#E08900;
+  --white:#FFFFFF;
+  --grey:#F5F5F5;
+  --grey-mid:#E4E4E0;
+  --ink:#1A1A1A;
+  --ink-soft:#5A5A55;
+  --danger:#B3261E;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--grey);line-height:1.5;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;}
+img{max-width:100%;display:block;}
+.container{max-width:1240px;margin:0 auto;padding:0 20px;}
+.view{display:none;}
+.view.active{display:block;}
+::selection{background:var(--gold);color:var(--forest-dark);}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+
+/* ---------- HEADER ---------- */
+header.topbar{background:var(--forest-dark);color:#eaf2ea;font-size:12.5px;padding:6px 0;}
+header.topbar .container{display:flex;justify-content:space-between;align-items:center;}
+header.topbar span{opacity:.85}
+.lang-select{background:transparent;color:#eaf2ea;border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:2px 10px;font-size:12px;}
+.lang-select option{color:#000;}
+
+nav.mainnav{background:var(--forest);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.12);}
+nav.mainnav .container{display:flex;align-items:center;gap:24px;padding-top:14px;padding-bottom:14px;}
+.logo{font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--white);letter-spacing:.02em;display:flex;align-items:baseline;gap:7px;flex-shrink:0;}
+.logo .tag{width:8px;height:8px;background:var(--gold);border-radius:50%;display:inline-block;align-self:center;}
+.logo .brand-sub{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.9;}
+.navlinks{display:flex;gap:4px;flex-shrink:0;}
+.navlinks button{background:transparent;color:#e7f0e7;padding:8px 12px;border-radius:8px;font-size:14.5px;font-weight:500;transition:background .15s;}
+.navlinks button:hover,.navlinks button.active{background:rgba(255,255,255,.14);color:#fff;}
+.searchwrap{flex:1;display:flex;align-items:center;background:#fff;border-radius:24px;padding:8px 16px;gap:8px;max-width:420px;}
+.searchwrap input{border:none;outline:none;flex:1;font-size:14px;}
+.searchwrap button.mic{background:none;color:var(--forest);font-size:16px;}
+.navicons{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.iconbtn{position:relative;background:rgba(255,255,255,.1);color:#fff;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.iconbtn:hover{background:rgba(255,255,255,.22);}
+.badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:var(--forest-dark);font-size:10px;font-weight:700;border-radius:10px;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px;}
+.btn-sell{background:var(--gold);color:var(--forest-dark);font-weight:700;padding:9px 18px;border-radius:24px;font-size:14px;white-space:nowrap;}
+.btn-sell:hover{background:var(--gold-dark);}
+.hamburger{display:none;background:transparent;color:#fff;font-size:22px;}
+@media(max-width:980px){
+  .navlinks,.searchwrap{display:none;}
+  .hamburger{display:block;}
+}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;
+  background:linear-gradient(120deg, rgba(18,61,21,.92) 0%, rgba(27,94,32,.78) 45%, rgba(27,94,32,.4) 100%),
+  url('https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=1800&auto=format&fit=crop') center 30%/cover;
+}
+.hero .container{position:relative;z-index:2;padding-top:60px;padding-bottom:60px;}
+.hero-eyebrow{font-family:'IBM Plex Mono';color:var(--gold);font-size:13px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold);}
+.hero h1{font-size:clamp(46px,7vw,84px);color:#fff;line-height:.95;margin-bottom:10px;}
+.hero h1 .accent{color:var(--gold);}
+.hero p.sub{color:#e7f0e7;font-size:19px;max-width:520px;margin:18px 0 34px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--gold);color:var(--forest-dark);padding:15px 30px;border-radius:30px;font-weight:700;font-size:15.5px;}
+.btn-primary:hover{background:#fff;}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.55);color:#fff;padding:14px 28px;border-radius:30px;font-weight:600;font-size:15.5px;}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.hero-stats{display:flex;gap:38px;margin-top:56px;flex-wrap:wrap;}
+.hero-stats div b{font-family:'IBM Plex Mono';font-size:26px;color:#fff;display:block;}
+.hero-stats div span{color:#cfe0cf;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;}
+
+/* ---------- SECTIONS GENERIC ---------- */
+section{padding:64px 0;}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:10px;}
+.section-head h2{font-size:32px;color:var(--forest-dark);}
+.section-head p{color:var(--ink-soft);font-size:14.5px;margin-top:4px;}
+.section-head .viewall{color:var(--forest);font-weight:600;font-size:14px;border-bottom:2px solid var(--gold);padding-bottom:2px;}
+
+/* categories */
+.cat-strip{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;}
+.cat-chip{flex-shrink:0;width:130px;text-align:center;background:#fff;border-radius:var(--radius);padding:14px 10px 12px;box-shadow:0 1px 4px rgba(0,0,0,.06);border:1px solid transparent;transition:.15s;}
+.cat-chip:hover{border-color:var(--gold);transform:translateY(-2px);}
+.cat-chip img{width:56px;height:56px;object-fit:cover;border-radius:50%;margin:0 auto 8px;border:2px solid var(--grey);}
+.cat-chip b{font-size:13px;}
+.cat-chip span{display:block;font-size:11px;color:var(--ink-soft);margin-top:2px;}
+
+/* ticket card - signature element */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:20px;}
+.ticket{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);position:relative;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column;}
+.ticket:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(18,61,21,.14);}
+.ticket-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--grey-mid);}
+.ticket-media img{width:100%;height:100%;object-fit:cover;}
+.stub{position:absolute;top:0;left:0;background:var(--forest-dark);color:#fff;font-family:'IBM Plex Mono';font-size:10.5px;padding:4px 9px 4px 8px;border-radius:0 0 8px 0;letter-spacing:.03em;}
+.verified{position:absolute;top:8px;right:8px;background:var(--forest);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;display:flex;align-items:center;gap:3px;}
+.discount-flag{position:absolute;bottom:0;left:0;background:var(--gold);color:var(--forest-dark);font-size:11px;font-weight:800;padding:3px 10px;border-radius:0 8px 0 0;}
+.fav-btn{position:absolute;bottom:8px;right:8px;background:rgba(255,255,255,.92);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.15s;}
+.fav-btn.active{color:var(--danger);}
+.punchline{border-top:1.5px dashed var(--grey-mid);position:relative;margin:0 12px;}
+.punchline::before,.punchline::after{content:'';position:absolute;top:-7px;width:14px;height:14px;background:var(--grey);border-radius:50%;}
+.punchline::before{left:-19px;}
+.punchline::after{right:-19px;}
+.ticket-body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column;}
+.ticket-body h4{font-size:15.5px;margin-bottom:3px;}
+.tmeta{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:11.5px;color:var(--ink-soft);margin-bottom:8px;}
+.tmeta b{color:var(--ink);font-family:'IBM Plex Mono';font-weight:600;}
+.trow{display:flex;align-items:center;gap:6px;font-size:11px;}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
+.tag{font-size:10px;padding:2.5px 7px;border-radius:20px;font-weight:600;}
+.tag.vac{background:#E6F4EA;color:var(--forest);}
+.tag.loc{background:var(--grey);color:var(--ink-soft);}
+.tag.rating{background:#FFF6E0;color:var(--gold-dark);}
+.price-row{display:flex;align-items:baseline;gap:8px;margin-top:auto;margin-bottom:10px;}
+.price-row .now{font-family:'IBM Plex Mono';font-weight:700;font-size:18px;color:var(--forest-dark);}
+.price-row .was{font-size:12px;color:#aaa;text-decoration:line-through;}
+.ticket-actions{display:flex;gap:6px;}
+.ticket-actions button{flex:1;padding:8px 4px;font-size:11.5px;border-radius:7px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:4px;}
+.act-cart{background:var(--forest);color:#fff;}
+.act-cart:hover{background:var(--forest-dark);}
+.act-buy{background:var(--gold);color:var(--forest-dark);}
+.act-buy:hover{background:var(--gold-dark);}
+.icon-row{display:flex;gap:6px;padding:0 14px 12px;}
+.icon-row button{flex:1;background:var(--grey);color:var(--ink-soft);padding:7px;border-radius:7px;font-size:14px;}
+.icon-row button:hover{background:var(--grey-mid);color:var(--ink);}
+
+/* seller strip */
+.seller-card{background:#fff;border-radius:var(--radius);padding:18px;display:flex;gap:14px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.seller-card img{width:52px;height:52px;border-radius:50%;object-fit:cover;}
+.seller-card b{font-size:14.5px;}
+.seller-card .sub{font-size:12px;color:var(--ink-soft);}
+
+/* testimonials */
+.testi{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:0 1px 4px rgba(0,0,0,.06);position:relative;}
+.testi .stars{color:var(--gold);font-size:13px;margin-bottom:10px;}
+.testi p{font-size:14.5px;color:var(--ink-soft);margin-bottom:16px;}
+.testi .who{display:flex;align-items:center;gap:10px;}
+.testi .who img{width:38px;height:38px;border-radius:50%;object-fit:cover;}
+.testi .who b{font-size:13.5px;display:block;}
+.testi .who span{font-size:11.5px;color:var(--ink-soft);}
+
+/* stats band */
+.statsband{background:var(--forest-dark);color:#fff;padding:50px 0;}
+.statsband .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+.statsband b{font-family:'IBM Plex Mono';font-size:34px;color:var(--gold);display:block;}
+.statsband span{font-size:12.5px;color:#cfe0cf;text-transform:uppercase;letter-spacing:.05em;}
+@media(max-width:700px){.statsband .grid4{grid-template-columns:repeat(2,1fr);}}
+
+/* app download */
+.appdl{background:linear-gradient(120deg,var(--forest) 0%,var(--forest-light) 100%);border-radius:24px;color:#fff;padding:50px;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
+.appdl h3{font-size:28px;margin-bottom:10px;}
+.appdl p{color:#e2efe2;font-size:14.5px;max-width:420px;}
+.storebtns{display:flex;gap:12px;margin-top:20px;}
+.storebtns button{background:#000;color:#fff;padding:11px 18px;border-radius:10px;font-size:13px;display:flex;align-items:center;gap:8px;}
+
+/* footer */
+footer{background:var(--forest-dark);color:#cfe0cf;padding:50px 0 20px;margin-top:40px;}
+.foot-grid{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:26px;margin-bottom:34px;}
+.foot-grid h5{color:#fff;font-family:'Inter';font-size:13.5px;margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em;}
+.foot-grid a{display:block;font-size:13px;padding:4px 0;color:#cfe0cf;}
+.foot-grid a:hover{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;display:flex;justify-content:space-between;font-size:12.5px;flex-wrap:wrap;gap:10px;}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
+
+/* ---------- SHOP VIEW ---------- */
+.shop-wrap{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:flex-start;}
+.filters{background:#fff;border-radius:var(--radius);padding:18px;position:sticky;top:90px;}
+.filters h4{font-size:14px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--grey-mid);}
+.fgroup{margin-bottom:18px;}
+.fgroup summary{font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;list-style:none;display:flex;justify-content:space-between;}
+.fgroup summary::-webkit-details-marker{display:none;}
+.fgroup summary::after{content:'▾';color:var(--ink-soft);}
+.fopt{display:flex;align-items:center;gap:7px;font-size:12.5px;padding:4px 0;color:var(--ink-soft);}
+.fopt input{accent-color:var(--forest);}
+.fopt:hover{color:var(--ink);}
+.range-row{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-top:4px;}
+input[type=range]{width:100%;accent-color:var(--forest);}
+.clear-filters{width:100%;background:var(--grey);padding:9px;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-top:6px;}
+.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+.toolbar select{padding:8px 10px;border-radius:8px;border:1px solid var(--grey-mid);font-size:13px;background:#fff;}
+.chiprow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.filter-chip{background:#fff;border:1px solid var(--grey-mid);padding:6px 12px;border-radius:20px;font-size:12.5px;}
+.filter-chip.active{background:var(--forest);color:#fff;border-color:var(--forest);}
+.pagination{display:flex;justify-content:center;gap:6px;margin-top:34px;}
+.pagination button{width:34px;height:34px;border-radius:8px;background:#fff;font-size:13px;}
+.pagination button.active{background:var(--forest);color:#fff;}
+@media(max-width:860px){.shop-wrap{grid-template-columns:1fr;}.filters{position:static;}}
+
+/* ---------- SELL VIEW ---------- */
+.sell-wrap{max-width:820px;margin:0 auto;background:#fff;border-radius:var(--radius);padding:36px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.field{margin-bottom:6px;}
+.field label{font-size:12.5px;font-weight:600;display:block;margin-bottom:6px;color:var(--ink-soft);}
+.field input,.field select,.field textarea{width:100%;padding:11px 13px;border:1.5px solid var(--grey-mid);border-radius:9px;font-size:14px;font-family:inherit;background:#fbfbfa;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--forest);background:#fff;}
+.field.full{grid-column:1/-1;}
+.toggle-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px;}
+.toggle-pill{display:flex;align-items:center;gap:8px;font-size:13px;background:var(--grey);padding:9px 14px;border-radius:20px;}
+.upload-box{border:2px dashed var(--grey-mid);border-radius:12px;padding:30px;text-align:center;color:var(--ink-soft);font-size:13.5px;cursor:pointer;}
+.upload-box:hover{border-color:var(--gold);color:var(--gold-dark);}
+.section-divider{margin:26px 0 16px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--forest);font-weight:700;display:flex;align-items:center;gap:10px;}
+.section-divider::after{content:'';flex:1;height:1px;background:var(--grey-mid);}
+
+/* ---------- CART / WISHLIST ---------- */
+.cart-wrap{display:grid;grid-template-columns:1fr 340px;gap:26px;align-items:flex-start;}
+.cart-row{background:#fff;border-radius:12px;padding:14px;display:flex;gap:14px;align-items:center;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.cart-row img{width:74px;height:74px;border-radius:8px;object-fit:cover;flex-shrink:0;}
+.cart-row .info{flex:1;}
+.cart-row .info b{font-size:14.5px;display:block;}
+.cart-row .info span{font-size:12px;color:var(--ink-soft);}
+.qty{display:flex;align-items:center;gap:8px;background:var(--grey);border-radius:20px;padding:4px 10px;}
+.qty button{width:22px;height:22px;background:#fff;border-radius:50%;font-size:13px;}
+.summary-box{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);position:sticky;top:90px;}
+.summary-row{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 0;color:var(--ink-soft);}
+.summary-row.total{font-weight:700;color:var(--ink);font-size:16px;border-top:1px solid var(--grey-mid);margin-top:6px;padding-top:12px;}
+.promo-row{display:flex;gap:8px;margin:14px 0;}
+.promo-row input{flex:1;padding:10px;border-radius:8px;border:1px solid var(--grey-mid);font-size:13px;}
+.pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;}
+.pay-opt{display:flex;align-items:center;gap:8px;border:1.5px solid var(--grey-mid);border-radius:9px;padding:10px;font-size:12.5px;cursor:pointer;}
+.pay-opt.sel{border-color:var(--forest);background:#F1F8F1;}
+.empty-state{text-align:center;padding:70px 20px;color:var(--ink-soft);}
+.empty-state div.ic{font-size:44px;margin-bottom:14px;}
+
+/* ---------- AUCTION ---------- */
+.auction-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+.auction-media{position:relative;aspect-ratio:16/10;}
+.auction-media img{width:100%;height:100%;object-fit:cover;}
+.live-pill{position:absolute;top:10px;left:10px;background:var(--danger);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:5px;}
+.live-dot{width:6px;height:6px;background:#fff;border-radius:50%;animation:pulse 1.4s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.timer-pill{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.65);color:#fff;font-family:'IBM Plex Mono';font-size:12.5px;padding:4px 10px;border-radius:20px;}
+.auction-body{padding:16px;}
+.bid-now{display:flex;justify-content:space-between;align-items:baseline;margin:10px 0;}
+.bid-now b{font-family:'IBM Plex Mono';font-size:24px;color:var(--forest-dark);}
+.bid-now span{font-size:11.5px;color:var(--ink-soft);}
+.bid-btns{display:flex;gap:8px;}
+.bid-btns button{flex:1;padding:10px;border-radius:8px;font-size:13px;font-weight:600;}
+.bid-btns .place{background:var(--gold);color:var(--forest-dark);}
+.bid-btns .auto{background:var(--grey);color:var(--ink-soft);}
+.bid-history{font-size:11.5px;color:var(--ink-soft);margin-top:10px;max-height:60px;overflow:auto;}
+
+/* ---------- CHAT ---------- */
+.chat-wrap{display:grid;grid-template-columns:280px 1fr;height:600px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+.chat-list{border-right:1px solid var(--grey-mid);overflow-y:auto;}
+.chat-item{display:flex;gap:10px;padding:13px 14px;border-bottom:1px solid var(--grey);cursor:pointer;}
+.chat-item.active,.chat-item:hover{background:var(--grey);}
+.chat-item img{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+.chat-item b{font-size:13.5px;display:block;}
+.chat-item span{font-size:11.5px;color:var(--ink-soft);}
+.chat-main{display:flex;flex-direction:column;}
+.chat-head{padding:13px 16px;border-bottom:1px solid var(--grey-mid);display:flex;justify-content:space-between;align-items:center;}
+.chat-head .who{display:flex;align-items:center;gap:10px;}
+.chat-head img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+.chat-head-icons{display:flex;gap:8px;}
+.chat-head-icons button{width:34px;height:34px;border-radius:50%;background:var(--grey);font-size:14px;}
+.chat-body{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;}
+.bubble{max-width:65%;padding:10px 14px;border-radius:14px;font-size:13.5px;}
+.bubble.them{background:var(--grey);align-self:flex-start;border-bottom-left-radius:4px;}
+.bubble.me{background:var(--forest);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}
+.chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--grey-mid);}
+.chat-input input{flex:1;padding:11px 14px;border-radius:20px;border:1px solid var(--grey-mid);}
+.chat-input button{width:42px;height:42px;border-radius:50%;background:var(--forest);color:#fff;}
+
+/* ---------- PROFILE/DASHBOARD ---------- */
+.dash-wrap{display:grid;grid-template-columns:230px 1fr;gap:26px;align-items:flex-start;}
+.dash-side{background:#fff;border-radius:14px;padding:18px;text-align:center;}
+.dash-side img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;}
+.dash-nav{text-align:left;margin-top:18px;}
+.dash-nav button{width:100%;text-align:left;padding:10px 12px;border-radius:8px;font-size:13.5px;color:var(--ink-soft);display:flex;align-items:center;gap:9px;margin-bottom:2px;}
+.dash-nav button:hover,.dash-nav button.active{background:var(--grey);color:var(--forest-dark);font-weight:600;}
+.dash-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+.dcard{background:#fff;border-radius:12px;padding:18px;}
+.dcard b{font-family:'IBM Plex Mono';font-size:24px;color:var(--forest-dark);display:block;}
+.dcard span{font-size:12px;color:var(--ink-soft);}
+.panel{background:#fff;border-radius:14px;padding:20px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{text-align:left;color:var(--ink-soft);font-weight:600;padding:10px 8px;border-bottom:2px solid var(--grey-mid);font-size:11.5px;text-transform:uppercase;}
+td{padding:10px 8px;border-bottom:1px solid var(--grey);}
+.status-pill{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+.status-pill.approved{background:#E6F4EA;color:var(--forest);}
+.status-pill.pending{background:#FFF6E0;color:var(--gold-dark);}
+.status-pill.rejected{background:#FCE8E6;color:var(--danger);}
+@media(max-width:900px){.dash-wrap{grid-template-columns:1fr;}.dash-cards{grid-template-columns:1fr 1fr;}}
+
+/* ---------- ADMIN ---------- */
+.admin-shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+.admin-sidebar{background:var(--forest-dark);color:#cfe0cf;padding:20px 0;}
+.admin-sidebar .logo{padding:0 20px 20px;}
+.admin-sidebar button{width:100%;text-align:left;padding:11px 20px;font-size:13.5px;display:flex;align-items:center;gap:10px;color:#cfe0cf;}
+.admin-sidebar button:hover,.admin-sidebar button.active{background:rgba(255,255,255,.08);color:#fff;border-left:3px solid var(--gold);}
+.admin-main{padding:26px 30px;background:var(--grey);}
+
+/* ---------- MODAL / TOAST ---------- */
+.overlay{position:fixed;inset:0;background:rgba(18,30,18,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+.overlay.active{display:flex;}
+.modal{background:#fff;border-radius:16px;max-width:460px;width:100%;max-height:88vh;overflow-y:auto;padding:30px;position:relative;}
+.modal .close{position:absolute;top:16px;right:16px;background:var(--grey);width:30px;height:30px;border-radius:50%;font-size:15px;}
+.modal h3{font-size:22px;margin-bottom:6px;}
+.modal p.sub{color:var(--ink-soft);font-size:13.5px;margin-bottom:20px;}
+.auth-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+.auth-tabs button{background:var(--grey);padding:7px 13px;border-radius:20px;font-size:12px;font-weight:600;color:var(--ink-soft);}
+.auth-tabs button.active{background:var(--forest);color:#fff;}
+.social-row{display:flex;flex-direction:column;gap:9px;margin-top:16px;}
+.social-btn{border:1.5px solid var(--grey-mid);padding:11px;border-radius:9px;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:9px;}
+.social-btn:hover{background:var(--grey);}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--forest-dark);color:#fff;padding:13px 22px;border-radius:30px;font-size:13.5px;opacity:0;pointer-events:none;transition:.25s;z-index:1200;display:flex;align-items:center;gap:10px;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* utility */
+.flex-c{display:flex;align-items:center;}
+.text-center{text-align:center;}
+.mt-lg{margin-top:40px;}
+@media(max-width:700px){
+  .form-grid,.cart-wrap,.dash-cards{grid-template-columns:1fr;}
+  .chat-wrap{grid-template-columns:1fr;height:auto;}
+  .chat-list{max-height:180px;}
+  .appdl{padding:30px;}
+  .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="topbar">
+  <div class="container">
+    <span>📍 Delivering across Andhra Pradesh, Telangana &amp; India · Trusted by 40,000+ farmers</span>
+    <select class="lang-select" id="langSelect" onchange="setLang(this.value)">
+      <option value="en">English</option>
+      <option value="te" selected>తెలుగు</option>
+      <option value="hi">हिंदी</option>
+      <option value="ta">தமிழ்</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="ml">മലയാളം</option>
+      <option value="mr">मराठी</option>
+    </select>
+  </div>
+</header>
+
+<nav class="mainnav">
+  <div class="container">
+    <div class="logo" onclick="showView('home')" style="cursor:pointer"><span class="tag"></span>SANTHA<span class="brand-sub">Market</span></div>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+    <div class="navlinks" id="navlinks">
+      <button onclick="showView('home')" data-nav="home" class="active" data-i18n="nav_home">Home</button>
+      <button onclick="showView('shop')" data-nav="shop" data-i18n="nav_shop">Shop</button>
+      <button onclick="showView('auction')" data-nav="auction" data-i18n="nav_auction">Auctions</button>
+      <button onclick="showView('sell')" data-nav="sell" data-i18n="nav_sell">Sell</button>
+      <button onclick="showView('chat')" data-nav="chat" data-i18n="nav_chat">Messages</button>
+      <button onclick="showView('dashboard')" data-nav="dashboard" data-i18n="nav_profile">Profile</button>
+    </div>
+    <div class="searchwrap">
+      <span>🔍</span>
+      <input type="text" id="heroSearchTop" placeholder="Search breed, e.g. Nellore, Deccani…" data-i18n-ph="search_ph">
+      <button class="mic" title="Voice search (AI)" onclick="toast('🎙️ Voice search — listening… (demo)')">🎤</button>
+    </div>
+    <div class="navicons">
+      <button class="iconbtn" title="Wishlist" onclick="showView('wishlist')">♡<span class="badge" id="wishBadge">0</span></button>
+      <button class="iconbtn" title="Cart" onclick="showView('cart')">🛒<span class="badge" id="cartBadge">0</span></button>
+      <button class="iconbtn" title="Notifications" onclick="toggleNotif()">🔔<span class="badge">3</span></button>
+      <button class="iconbtn" title="Login" id="profileIconBtn" onclick="handleProfileClick()">👤</button>
+      <button class="iconbtn" title="Admin panel" onclick="showView('admin')">⚙️</button>
+    </div>
+    <button class="btn-sell" onclick="showView('sell')" data-i18n="nav_sellbtn">+ Sell Sheep</button>
+  </div>
+</nav>
+
+<!-- ================= HOME VIEW ================= -->
+<div class="view active" id="view-home">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">India's #1 Livestock Marketplace</div>
+      <h1 data-i18n="hero_title1">Buy &amp; Sell<br><span class="accent">Healthy Sheep</span><br>Across India</h1>
+      <p class="sub" data-i18n="hero_sub">Verified sellers, vaccinated animals, live mandi prices and doorstep transport — from Kurnool to Kolkata.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="showView('shop')" data-i18n="hero_btn1">Browse Sheep</button>
+        <button class="btn-ghost" onclick="showView('sell')" data-i18n="hero_btn2">Sell Your Sheep</button>
+      </div>
+      <div class="hero-stats">
+        <div><b>38,400+</b><span>Active Listings</span></div>
+        <div><b>12,900+</b><span>Verified Sellers</span></div>
+        <div><b>₹210 Cr+</b><span>Trade Volume</span></div>
+        <div><b>4.7 / 5</b><span>Avg. Rating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="cat_title">Shop by Breed</h2><p data-i18n="cat_sub">Popular sheep breeds trading this week</p></div></div>
+    <div class="cat-strip" id="catStrip"></div>
+  </section>
+
+  <section class="container">
+    <div class="section-head">
+      <div><h2 data-i18n="feat_title">Featured Animals</h2><p data-i18n="feat_sub">Hand-picked, verified &amp; ready for pickup</p></div>
+      <a class="viewall" onclick="showView('shop')" href="javascript:void(0)">View all →</a>
+    </div>
+    <div class="grid" id="featuredGrid"></div>
+  </section>
+
+  <section class="container">
+    <div class="section-head">
+      <div><h2 data-i18n="latest_title">Latest Arrivals</h2><p data-i18n="latest_sub">Freshly listed in the last 24 hours</p></div>
+      <a class="viewall" onclick="showView('shop')" href="javascript:void(0)">View all →</a>
+    </div>
+    <div class="grid" id="latestGrid"></div>
+  </section>
+
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="deals_title">Best Offers Today</h2><p data-i18n="deals_sub">Biggest discounts across categories</p></div></div>
+    <div class="grid" id="dealsGrid"></div>
+  </section>
+
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="sellers_title">Premium Sellers Near You</h2><p data-i18n="sellers_sub">Top-rated farms &amp; traders</p></div></div>
+    <div class="grid" id="sellerGrid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))"></div>
+  </section>
+
+  <section class="statsband">
+    <div class="container grid4">
+      <div><b>1.2L+</b><span>Sheep Traded</span></div>
+      <div><b>18</b><span>States Covered</span></div>
+      <div><b>96%</b><span>On-time Delivery</span></div>
+      <div><b>24/7</b><span>Support</span></div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="testi_title">What Farmers Say</h2></div></div>
+    <div class="grid" id="testiGrid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))"></div>
+  </section>
+
+  <section class="container">
+    <div class="appdl">
+      <div>
+        <h3>Get the SANTHA App</h3>
+        <p>Track auctions, chat with sellers and manage your flock — right from your pocket. Available for Android &amp; iOS.</p>
+        <div class="storebtns">
+          <button onclick="toast('App coming soon — join the waitlist!')">▶ Google Play</button>
+          <button onclick="toast('App coming soon — join the waitlist!')">🍎 App Store</button>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=420&auto=format&fit=crop" style="width:220px;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.3)" alt="">
+    </div>
+  </section>
+</div>
+
+<!-- ================= SHOP VIEW ================= -->
+<div class="view" id="view-shop">
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="shop_title">All Sheep Listings</h2><p><span id="resultCount">100</span> <span data-i18n="shop_sub">healthy animals found</span></p></div></div>
+    <div class="shop-wrap">
+      <aside class="filters">
+        <h4 data-i18n="filters_h">Filters</h4>
+        <details class="fgroup" open><summary data-i18n="f_state">State</summary>
+          <div id="fState"></div>
+        </details>
+        <details class="fgroup" open><summary data-i18n="f_breed">Breed</summary>
+          <div id="fBreed"></div>
+        </details>
+        <details class="fgroup" open><summary data-i18n="f_price">Price Range</summary>
+          <input type="range" id="fPrice" min="5000" max="35000" value="35000" oninput="renderShop()">
+          <div class="range-row"><span>₹5,000</span><span id="fPriceVal">₹35,000</span></div>
+        </details>
+        <details class="fgroup" open><summary data-i18n="f_weight">Weight (KG)</summary>
+          <input type="range" id="fWeight" min="10" max="60" value="60" oninput="renderShop()">
+          <div class="range-row"><span>10kg</span><span id="fWeightVal">60kg</span></div>
+        </details>
+        <details class="fgroup" open><summary data-i18n="f_gender">Gender</summary>
+          <label class="fopt"><input type="checkbox" value="Male" class="fGender" onchange="renderShop()"> <span data-i18n="f_male">Male (Ram)</span></label>
+          <label class="fopt"><input type="checkbox" value="Female" class="fGender" onchange="renderShop()"> <span data-i18n="f_female">Female (Ewe)</span></label>
+        </details>
+        <details class="fgroup" open><summary data-i18n="f_other">Other</summary>
+          <label class="fopt"><input type="checkbox" id="fVaccinated" onchange="renderShop()"> <span data-i18n="f_vaconly">Vaccinated only</span></label>
+          <label class="fopt"><input type="checkbox" id="fVerified" onchange="renderShop()"> <span data-i18n="f_veronly">Verified seller only</span></label>
+          <label class="fopt"><input type="checkbox" id="fDiscount" onchange="renderShop()"> <span data-i18n="f_disc">On discount</span></label>
+        </details>
+        <button class="clear-filters" style="background:var(--forest);color:#fff;margin-top:10px" onclick="renderShop();toast(currentLang==='te'?'✅ ఫిల్టర్‌లు వర్తింపజేయబడ్డాయి':'✅ Filters applied')" data-i18n="apply_filters">Apply Filters</button>
+        <button class="clear-filters" onclick="clearFilters()" data-i18n="clear_filters">Clear All Filters</button>
+      </aside>
+      <div>
+        <div class="chiprow" id="quickChips"></div>
+        <div class="toolbar">
+          <input type="text" id="shopSearch" placeholder="Search within results…" style="padding:9px 13px;border-radius:8px;border:1px solid var(--grey-mid);font-size:13px;width:220px" oninput="renderShop()">
+          <select id="sortSel" onchange="renderShop()">
+            <option value="latest">Sort: Latest</option>
+            <option value="priceLow">Price: Low to High</option>
+            <option value="priceHigh">Price: High to Low</option>
+            <option value="discount">Highest Discount</option>
+            <option value="rating">Seller Rating</option>
+            <option value="nearby">Nearby</option>
+          </select>
+        </div>
+        <div class="grid" id="shopGrid"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= SELL VIEW ================= -->
+<div class="view" id="view-sell">
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="sell_title">List Your Sheep for Sale</h2><p data-i18n="sell_sub">Verified listings sell 3x faster. Fill in accurate details.</p></div></div>
+    <div class="sell-wrap">
+      <div class="upload-box" onclick="document.getElementById('sellFileInput').click()">
+        <div style="font-size:30px;margin-bottom:8px">📸</div>
+        <b>Upload Photos, Videos &amp; 360° Images</b><br>
+        <span style="font-size:12px">Up to 8 files · JPG, PNG, MP4 · Max 25MB each</span>
+        <input type="file" id="sellFileInput" accept="image/*,video/*" multiple style="display:none" onchange="handleSellFiles(this.files)">
+      </div>
+      <div id="sellUploadPreview" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"></div>
+      <div id="sellUploadStatus" style="font-size:12px;color:var(--ink-soft);margin-top:6px"></div>
+
+      <div class="section-divider">Basic Details</div>
+      <div class="form-grid">
+        <div class="field"><label>Animal Name / Title</label><input type="text" id="sellTitle" placeholder="e.g. Healthy Nellore Ram"></div>
+        <div class="field"><label>Breed</label><select id="sellBreed"><option>Nellore</option><option>Deccani</option><option>Bellary</option><option>Osmanabadi</option><option>Madgyal</option><option>Mandya</option><option>Kurnool</option><option>Yalaga</option><option>Ganjam</option></select></div>
+        <div class="field"><label>Gender</label><select id="sellGender"><option value="Male">Male (Ram)</option><option value="Female">Female (Ewe)</option></select></div>
+        <div class="field"><label>Age (years)</label><input type="number" step="0.1" id="sellAge" placeholder="e.g. 1.8"></div>
+        <div class="field"><label>Weight (KG)</label><input type="number" id="sellWeight" placeholder="e.g. 38"></div>
+        <div class="field"><label>Color</label><input type="text" id="sellColor" placeholder="e.g. White, Brown, Black-spotted"></div>
+        <div class="field"><label>Ear Tag Number</label><input type="text" id="sellEarTag" placeholder="e.g. AP-KNL-00219"></div>
+        <div class="field"><label>Available Quantity</label><input type="number" id="sellQty" value="1"></div>
+      </div>
+
+      <div class="section-divider">Health &amp; Verification</div>
+      <div class="form-grid">
+        <div class="field"><label>Vaccination Status</label><select id="sellVaccination"><option>Fully Vaccinated</option><option>Partially Vaccinated</option><option>Not Vaccinated</option></select></div>
+        <div class="field"><label>Health Certificate</label><input type="file"></div>
+      </div>
+      <div class="toggle-row">
+        <label class="toggle-pill"><input type="checkbox" checked> AI Health Analysis Consent</label>
+        <label class="toggle-pill"><input type="checkbox"> Live Video Inspection Available</label>
+      </div>
+
+      <div class="section-divider">Price &amp; Location</div>
+      <div class="form-grid">
+        <div class="field"><label>Expected Price (₹)</label><input type="number" id="sellPrice" placeholder="e.g. 18500"></div>
+        <div class="field"><label>Location (Village / District)</label><input type="text" id="sellLocation" placeholder="e.g. Anantapur, AP"></div>
+      </div>
+      <div class="toggle-row">
+        <label class="toggle-pill"><input type="checkbox" checked id="sellNegotiable"> Negotiable</label>
+        <label class="toggle-pill"><input type="checkbox" checked id="sellPickup"> Pickup Available</label>
+        <label class="toggle-pill"><input type="checkbox" id="sellDelivery"> Delivery Available</label>
+        <label class="toggle-pill"><input type="checkbox" id="sellTransport"> Transport Support</label>
+      </div>
+
+      <div class="section-divider">Description</div>
+      <div class="field full"><textarea rows="4" id="sellDescription" placeholder="Describe temperament, feeding, breeding history…"></textarea></div>
+
+      <div style="background:#F1F8F1;border:1px solid #cfe6cf;border-radius:10px;padding:14px;margin-top:20px;font-size:13px;color:var(--forest-dark);display:flex;gap:10px;align-items:flex-start">
+        <span>🤖</span>
+        <div><b>AI Price Suggestion:</b> Based on breed, weight &amp; local mandi trends, a fair price range is <b class="mono">₹16,200 – ₹19,800</b>.</div>
+      </div>
+
+      <button class="btn-primary" style="width:100%;margin-top:22px" onclick="submitListing()">Publish Listing</button>
+    </div>
+  </section>
+</div>
+
+<!-- ================= AUCTION VIEW ================= -->
+<div class="view" id="view-auction">
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="auction_title">Live Auctions</h2><p data-i18n="auction_sub">Bid in real time on premium animals</p></div></div>
+    <div class="grid" id="auctionGrid"></div>
+  </section>
+</div>
+
+<!-- ================= CHAT VIEW ================= -->
+<div class="view" id="view-chat">
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="chat_title">Messages</h2><p data-i18n="chat_sub">Chat directly with buyers &amp; sellers</p></div></div>
+    <div class="chat-wrap" id="chatWrap"></div>
+  </section>
+</div>
+
+<!-- ================= CART VIEW ================= -->
+<div class="view" id="view-cart">
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="cart_title">Your Cart</h2></div></div>
+    <div id="cartContent"></div>
+  </section>
+</div>
+
+<!-- ================= WISHLIST VIEW ================= -->
+<div class="view" id="view-wishlist">
+  <section class="container">
+    <div class="section-head"><div><h2 data-i18n="wish_title">Wishlist</h2></div></div>
+    <div class="grid" id="wishlistGrid"></div>
+  </section>
+</div>
+
+<!-- ================= DASHBOARD VIEW ================= -->
+<div class="view" id="view-dashboard">
+  <section class="container">
+    <div class="dash-wrap">
+      <aside class="dash-side">
+        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200&auto=format&fit=crop" alt="">
+        <b id="dashName">Ganesh Reddy</b>
+        <div style="font-size:12px;color:var(--ink-soft)" id="dashLoc">Anantapur, Andhra Pradesh</div>
+        <div style="font-size:12px;color:var(--gold-dark);margin-top:6px">★ 4.8 Seller Rating</div>
+        <div class="dash-nav">
+          <button class="active">📊 Dashboard</button>
+          <button onclick="showView('cart')">📦 My Orders</button>
+          <button onclick="showView('wishlist')">♡ Saved Animals</button>
+          <button>📝 My Listings</button>
+          <button onclick="showView('chat')">💬 Messages</button>
+          <button>🔔 Notifications</button>
+          <button>💳 Wallet &amp; Payments</button>
+          <button>📍 Address</button>
+          <button>⚙️ Settings</button>
+          <button>❓ Help Center</button>
+          <button style="color:var(--danger)" onclick="doLogout()">↪ Logout</button>
+        </div>
+      </aside>
+      <div>
+        <div class="dash-cards">
+          <div class="dcard"><b>14</b><span>Active Listings</span></div>
+          <div class="dcard"><b>32</b><span>Completed Orders</span></div>
+          <div class="dcard"><b>₹2.4L</b><span>Wallet Balance</span></div>
+          <div class="dcard"><b>4.8★</b><span>Buyer Rating</span></div>
+        </div>
+        <div class="panel">
+          <h4 style="margin-bottom:14px">My Listings</h4>
+          <table>
+            <thead><tr><th>Animal</th><th>Breed</th><th>Price</th><th>Status</th><th>Views</th></tr></thead>
+            <tbody id="myListingsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ADMIN VIEW ================= -->
+<div class="view" id="view-admin">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="logo" style="color:#fff"><span class="tag"></span>SANTHA<span class="brand-sub">Market</span></div>
+      <button class="active">📊 Dashboard</button>
+      <button>👥 Manage Users</button>
+      <button>🧑‍🌾 Manage Sellers</button>
+      <button>✅ Approve Listings</button>
+      <button>📈 Analytics &amp; Revenue</button>
+      <button>📣 Advertisements</button>
+      <button>🎟 Coupons</button>
+      <button>⚠️ Complaints</button>
+      <button>🔨 Live Auctions</button>
+      <button>💳 Payments</button>
+      <button>🛡 Verification</button>
+      <button onclick="showView('home')" style="margin-top:20px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px">← Exit Admin</button>
+    </aside>
+    <main class="admin-main">
+      <h2 style="margin-bottom:18px">Admin Dashboard</h2>
+      <div class="dash-cards">
+        <div class="dcard"><b>38,412</b><span>Total Listings</span></div>
+        <div class="dcard"><b>12,904</b><span>Verified Sellers</span></div>
+        <div class="dcard"><b>₹2.1Cr</b><span>Revenue (MTD)</span></div>
+        <div class="dcard"><b>146</b><span>Pending Approvals</span></div>
+      </div>
+      <div class="panel">
+        <h4 style="margin-bottom:14px">Listings Awaiting Approval</h4>
+        <table>
+          <thead><tr><th>Seller</th><th>Animal</th><th>Breed</th><th>Price</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="adminBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ================= FOOTER (hidden on admin) ================= -->
+<footer id="siteFooter">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:10px"><span class="tag"></span>SANTHA<span class="brand-sub">Market</span></div>
+        <p style="font-size:13px;line-height:1.7">India's trusted digital sheep marketplace — connecting verified farmers and buyers with transparent pricing, health records and doorstep delivery.</p>
+      </div>
+      <div><h5 data-i18n="foot_company">Company</h5><a href="#" data-i18n="foot_about">About Us</a><a href="#" data-i18n="foot_careers">Careers</a><a href="#" data-i18n="foot_blog">Blog</a><a href="#" data-i18n="foot_contact">Contact</a></div>
+      <div><h5 data-i18n="foot_market">Marketplace</h5><a onclick="showView('shop')" href="javascript:void(0)" data-i18n="foot_shopsheep">Shop Sheep</a><a onclick="showView('sell')" href="javascript:void(0)" data-i18n="foot_sellsheep">Sell Sheep</a><a onclick="showView('auction')" href="javascript:void(0)" data-i18n="foot_auctions">Auctions</a><a href="#" data-i18n="foot_breedguide">Breeds Guide</a></div>
+      <div><h5 data-i18n="foot_support">Support</h5><a href="#" data-i18n="foot_help">Help Center</a><a href="#" data-i18n="foot_faq">FAQ</a><a href="#" data-i18n="foot_shipping">Shipping</a><a href="#" data-i18n="foot_returns">Returns</a></div>
+      <div><h5 data-i18n="foot_legal">Legal</h5><a href="#" data-i18n="foot_privacy">Privacy Policy</a><a href="#" data-i18n="foot_terms">Terms of Use</a><a href="#" data-i18n="foot_sellerpolicy">Seller Policy</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SANTHA. All rights reserved.</span>
+      <span>Made for India's farmers 🐑</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= AUTH MODAL ================= -->
+<div class="overlay" id="authModal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('authModal')">✕</button>
+    <h3 id="authTitle" data-i18n="auth_title">Welcome to SANTHA Market</h3>
+    <p class="sub">Login or create your account to start trading.</p>
+    <div class="auth-tabs">
+      <button class="active" onclick="authTab(this,'otp')">Mobile OTP</button>
+      <button onclick="authTab(this,'email')">Email</button>
+      <button onclick="authTab(this,'register')">Register</button>
+    </div>
+    <div id="authOtp">
+      <div class="field"><label>Mobile Number</label><input type="tel" id="otpPhone" placeholder="+91 98765 43210"></div>
+      <button class="btn-primary" style="width:100%" onclick="sendOtp()">Send OTP</button>
+      <div class="field" id="otpCodeWrap" style="display:none;margin-top:10px">
+        <label>Enter OTP Code</label><input type="text" id="otpCode" placeholder="6-digit code">
+        <button class="btn-primary" style="width:100%;margin-top:8px" onclick="confirmOtp()">Verify &amp; Login</button>
+      </div>
+      <div id="recaptcha-container"></div>
+    </div>
+    <div id="authEmail" style="display:none">
+      <div class="field"><label>Email</label><input type="email" id="loginEmail" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••"></div>
+      <button class="btn-primary" style="width:100%" onclick="doLogin()">Login</button>
+    </div>
+    <div id="authRegister" style="display:none">
+      <div class="form-grid">
+        <div class="field"><label>Full Name</label><input type="text" id="regName"></div>
+        <div class="field"><label>Mobile Number</label><input type="tel" id="regPhone"></div>
+        <div class="field"><label>Email</label><input type="email" id="regEmail"></div>
+        <div class="field"><label>Password</label><input type="password" id="regPassword"></div>
+        <div class="field"><label>Confirm Password</label><input type="password" id="regConfirm"></div>
+        <div class="field"><label>State</label><input type="text" id="regState"></div>
+        <div class="field"><label>District</label><input type="text" id="regDistrict"></div>
+        <div class="field"><label>Village</label><input type="text" id="regVillage"></div>
+        <div class="field"><label>Pincode</label><input type="text" id="regPincode"></div>
+        <div class="field"><label>Preferred Language</label>
+          <select id="regLang"><option>Telugu</option><option>English</option><option>Hindi</option></select>
+        </div>
+        <div class="field full"><label>Referral Code (optional)</label><input type="text"></div>
+        <div class="field full"><label>Profile Photo</label><input type="file"></div>
+        <div class="field full"><label>Government ID Verification</label><input type="file"></div>
+      </div>
+      <label class="fopt" style="margin:10px 0"><input type="checkbox" checked> I accept the Terms &amp; Conditions</label>
+      <button class="btn-primary" style="width:100%" onclick="doRegister()">Create Account</button>
+    </div>
+    <div class="social-row" id="authSocial">
+      <button class="social-btn" onclick="toast('Google login (demo)')">🔵 Continue with Google</button>
+      <button class="social-btn" onclick="toast('Facebook login (demo)')">🔷 Continue with Facebook</button>
+      <button class="social-btn" onclick="toast('Apple login (demo)')">🍎 Continue with Apple</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= QUICK VIEW MODAL ================= -->
+<div class="overlay" id="quickViewModal">
+  <div class="modal" style="max-width:640px" id="quickViewBody"></div>
+</div>
+
+<!-- ================= NOTIFICATIONS PANEL ================= -->
+<div class="overlay" id="notifModal">
+  <div class="modal" style="max-width:380px">
+    <button class="close" onclick="closeModal('notifModal')">✕</button>
+    <h3 style="font-size:18px;margin-bottom:14px">Notifications</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+      <div style="background:var(--grey);padding:12px;border-radius:10px"><b>💰 Price Drop</b><br><span style="color:var(--ink-soft)">Nellore Ram near you dropped 8%</span></div>
+      <div style="background:var(--grey);padding:12px;border-radius:10px"><b>📦 Order Update</b><br><span style="color:var(--ink-soft)">Your order #SN4821 is out for delivery</span></div>
+      <div style="background:var(--grey);padding:12px;border-radius:10px"><b>🔨 Auction Alert</b><br><span style="color:var(--ink-soft)">Bellary Ram auction ends in 10 mins</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ================= FIREBASE (Auth + Firestore) ================= -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signOut, onAuthStateChanged, updateProfile,
+  RecaptchaVerifier, signInWithPhoneNumber
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getFirestore, doc, setDoc, getDoc, collection, addDoc, updateDoc,
+  onSnapshot, query, where, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+import {
+  getStorage, ref, uploadBytesResumable, getDownloadURL
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAn3uIr5rz3f3W140XEjfo-QGF0I3VHKpI",
+  authDomain: "santha-market-760fc.firebaseapp.com",
+  projectId: "santha-market-760fc",
+  storageBucket: "santha-market-760fc.firebasestorage.app",
+  messagingSenderId: "163627434405",
+  appId: "1:163627434405:web:2a3fbeb8044864c2cba84c",
+  measurementId: "G-FY8B8MZCWR"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+/* ---- STORAGE (listing photos/videos) ---- */
+window.fbUploadFile = function(file, path, onProgress){
+  return new Promise((resolve,reject)=>{
+    const task = uploadBytesResumable(ref(storage, path), file);
+    task.on('state_changed',
+      snap => onProgress && onProgress(Math.round(100*snap.bytesTransferred/snap.totalBytes)),
+      err => reject(err),
+      async () => resolve(await getDownloadURL(task.snapshot.ref))
+    );
+  });
+};
+
+/* ---- AUTH ---- */
+window.fbRegister = async function(data){
+  const cred = await createUserWithEmailAndPassword(auth, data.email, data.password);
+  await updateProfile(cred.user, { displayName: data.name });
+  await setDoc(doc(db,"users",cred.user.uid), {
+    name:data.name, phone:data.phone, email:data.email,
+    state:data.state, district:data.district, village:data.village,
+    pincode:data.pincode, language:data.language, role:"seller",
+    createdAt: serverTimestamp()
+  });
+  return cred.user;
+};
+window.fbLogin = (email,password)=> signInWithEmailAndPassword(auth,email,password);
+window.fbLogout = ()=> signOut(auth);
+
+let recaptchaVerifier = null;
+window.fbSendOtp = async function(phone){
+  if(!recaptchaVerifier){
+    recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { size:'invisible' });
+  }
+  const result = await signInWithPhoneNumber(auth, phone, recaptchaVerifier);
+  window._otpConfirmation = result;
+  return result;
+};
+window.fbConfirmOtp = async function(code){
+  if(!window._otpConfirmation) throw new Error("Send OTP first");
+  const cred = await window._otpConfirmation.confirm(code);
+  const uref = doc(db,"users",cred.user.uid);
+  const snap = await getDoc(uref);
+  if(!snap.exists()){
+    await setDoc(uref, { phone: cred.user.phoneNumber, role:"buyer", createdAt: serverTimestamp() });
+  }
+  return cred.user;
+};
+
+onAuthStateChanged(auth, (user)=>{
+  if(window.onFbAuthChange) window.onFbAuthChange(user);
+});
+
+/* ---- FIRESTORE LISTINGS ---- */
+window.fbAddListing = async function(data){
+  const user = auth.currentUser;
+  if(!user) throw new Error("Not logged in");
+  return addDoc(collection(db,"listings"), {
+    ...data, sellerId:user.uid, sellerName:user.displayName||user.phoneNumber||"Seller",
+    status:"pending", createdAt: serverTimestamp()
+  });
+};
+window.fbListenPending = function(cb){
+  const q = query(collection(db,"listings"), where("status","==","pending"));
+  return onSnapshot(q, snap=>cb(snap.docs.map(d=>({id:d.id,...d.data()}))));
+};
+window.fbListenApproved = function(cb){
+  const q = query(collection(db,"listings"), where("status","==","approved"));
+  return onSnapshot(q, snap=>cb(snap.docs.map(d=>({id:d.id,...d.data()}))));
+};
+window.fbListenMyListings = function(uid, cb){
+  const q = query(collection(db,"listings"), where("sellerId","==",uid));
+  return onSnapshot(q, snap=>cb(snap.docs.map(d=>({id:d.id,...d.data()}))));
+};
+window.fbSetListingStatus = (id,status)=> updateDoc(doc(db,"listings",id), { status });
+</script>
+
+<script>
+/* ================= DATA ================= */
+const BREEDS = ["Nellore","Deccani","Bellary","Osmanabadi","Madgyal","Mandya","Kurnool","Yalaga","Ganjam","Nallamala","Coimbatore","Marwari"];
+const STATES = ["Andhra Pradesh","Telangana","Karnataka","Tamil Nadu","Maharashtra"];
+const DISTRICTS = {"Andhra Pradesh":["Kurnool","Anantapur","Guntur","Kadapa"],"Telangana":["Warangal","Nizamabad","Karimnagar"],"Karnataka":["Bellary","Bidar","Raichur"],"Tamil Nadu":["Coimbatore","Salem"],"Maharashtra":["Solapur","Pune"]};
+const IMAGES = [
+ "https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?q=80&w=500&auto=format&fit=crop",
+ "https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=500&auto=format&fit=crop",
+ "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?q=80&w=500&auto=format&fit=crop",
+ "https://images.unsplash.com/photo-1518715048023-eb02ab6a8657?q=80&w=500&auto=format&fit=crop",
+ "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=500&auto=format&fit=crop",
+ "https://images.unsplash.com/photo-1509909756405-be0199881695?q=80&w=500&auto=format&fit=crop",
+ "https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=500&auto=format&fit=crop",
+ "https://images.unsplash.com/photo-1601758064135-c9862e8a2e0c?q=80&w=500&auto=format&fit=crop"
+];
+function seedRand(seed){let x=Math.sin(seed)*10000;return x-Math.floor(x);}
+function pick(arr,seed){return arr[Math.floor(seedRand(seed)*arr.length)];}
+
+let listings = [];
+(function generateListings(){
+  for(let i=1;i<=100;i++){
+    const breed = pick(BREEDS,i*3.1);
+    const state = pick(STATES,i*7.7);
+    const district = pick(DISTRICTS[state],i*2.3);
+    const gender = seedRand(i*5.5) > 0.45 ? "Male" : "Female";
+    const weight = Math.round(15 + seedRand(i*1.9)*40);
+    const age = (0.5 + seedRand(i*4.4)*3.5).toFixed(1);
+    const basePrice = Math.round((weight*380 + seedRand(i*8.8)*3000)/50)*50;
+    const hasDiscount = seedRand(i*6.6) > 0.55;
+    const discount = hasDiscount ? Math.round(5+seedRand(i*9.9)*25) : 0;
+    const offerPrice = hasDiscount ? Math.round(basePrice*(1-discount/100)/50)*50 : basePrice;
+    const vaccinated = seedRand(i*3.3) > 0.25;
+    const verified = seedRand(i*11.1) > 0.35;
+    const rating = (3.5 + seedRand(i*2.2)*1.5).toFixed(1);
+    const stock = Math.ceil(seedRand(i*1.1)*8);
+    listings.push({
+      id:i, name:`Healthy ${breed} ${gender==="Male"?"Ram":"Ewe"}`, breed, weight, age, gender,
+      price:basePrice, offerPrice, discount, vaccinated, verified, rating, stock,
+      state, district, location:`${district}, ${state}`,
+      earTag:`${state.slice(0,2).toUpperCase()}-${district.slice(0,3).toUpperCase()}-${String(1000+i)}`,
+      img: IMAGES[i % IMAGES.length]
+    });
+  }
+})();
+
+const TESTIMONIALS = [
+ {name:"Ramesh Naidu",loc:"Kurnool, AP",text:"Sold 12 Nellore rams within a week. Payment came straight to my wallet — no middleman cut.",img:"https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=150&auto=format&fit=crop"},
+ {name:"Lakshmi Devi",loc:"Warangal, TS",text:"The health certificate upload gave buyers confidence. My Deccani ewes sold at a fair price.",img:"https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=150&auto=format&fit=crop"},
+ {name:"Suresh Reddy",loc:"Bellary, KA",text:"Live auction feature is brilliant — got 15% more than my asking price in a bidding war.",img:"https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?q=80&w=150&auto=format&fit=crop"},
+];
+
+/* ================= i18n (partial) ================= */
+const I18N = {
+  en:{nav_home:"Home",nav_shop:"Shop",nav_auction:"Auctions",nav_sell:"Sell",nav_chat:"Messages",nav_profile:"Profile",nav_sellbtn:"+ Sell Sheep",
+      hero_title1:"Buy &amp; Sell<br><span class='accent'>Healthy Sheep</span><br>Across India",
+      hero_sub:"Verified sellers, vaccinated animals, live mandi prices and doorstep transport — from Kurnool to Kolkata.",
+      hero_btn1:"Browse Sheep",hero_btn2:"Sell Your Sheep",search_ph:"Search breed, e.g. Nellore, Deccani…",
+      cat_title:"Shop by Breed",cat_sub:"Popular sheep breeds trading this week",
+      feat_title:"Featured Animals",feat_sub:"Hand-picked, verified &amp; ready for pickup",
+      latest_title:"Latest Arrivals",latest_sub:"Freshly listed in the last 24 hours",
+      deals_title:"Best Offers Today",deals_sub:"Biggest discounts across categories",
+      sellers_title:"Premium Sellers Near You",sellers_sub:"Top-rated farms &amp; traders",
+      testi_title:"What Farmers Say",
+      shop_title:"All Sheep Listings",shop_sub:"healthy animals found",
+      filters_h:"Filters",apply_filters:"Apply Filters",clear_filters:"Clear All Filters",
+      f_state:"State",f_breed:"Breed",f_price:"Price Range",f_weight:"Weight (KG)",f_gender:"Gender",
+      f_male:"Male (Ram)",f_female:"Female (Ewe)",f_other:"Other",f_vaconly:"Vaccinated only",
+      f_veronly:"Verified seller only",f_disc:"On discount",
+      sell_title:"List Your Sheep for Sale",sell_sub:"Verified listings sell 3x faster. Fill in accurate details.",
+      auction_title:"Live Auctions",auction_sub:"Bid in real time on premium animals",
+      chat_title:"Messages",chat_sub:"Chat directly with buyers &amp; sellers",
+      cart_title:"Your Cart",wish_title:"Wishlist",
+      auth_title:"Welcome to SANTHA Market",
+      foot_company:"Company",foot_about:"About Us",foot_careers:"Careers",foot_blog:"Blog",foot_contact:"Contact",
+      foot_market:"Marketplace",foot_shopsheep:"Shop Sheep",foot_sellsheep:"Sell Sheep",foot_auctions:"Auctions",foot_breedguide:"Breeds Guide",
+      foot_support:"Support",foot_help:"Help Center",foot_faq:"FAQ",foot_shipping:"Shipping",foot_returns:"Returns",
+      foot_legal:"Legal",foot_privacy:"Privacy Policy",foot_terms:"Terms of Use",foot_sellerpolicy:"Seller Policy",
+      addToCart:"Add to Cart",buyNow:"Buy Now",quickViewLbl:"Quick View",compareLbl:"Compare",chatSellerLbl:"Chat Seller",callSellerLbl:"Call Seller",
+      vaccinatedLbl:"Vaccinated",notVaccinatedLbl:"Not Vaccinated",inStockLbl:"in stock",verifiedLbl:"Verified"},
+  te:{nav_home:"హోమ్",nav_shop:"షాప్",nav_auction:"వేలం",nav_sell:"అమ్మండి",nav_chat:"సందేశాలు",nav_profile:"ప్రొఫైల్",nav_sellbtn:"+ గొర్రెలు అమ్మండి",
+      hero_title1:"ఆరోగ్యకరమైన<br><span class='accent'>గొర్రెలు</span><br>కొనండి & అమ్మండి",
+      hero_sub:"వెరిఫైడ్ విక్రేతలు, వ్యాక్సిన్ చేసిన జంతువులు, లైవ్ మార్కెట్ ధరలు — కర్నూలు నుండి కోల్‌కతా వరకు.",
+      hero_btn1:"గొర్రెలు చూడండి",hero_btn2:"మీ గొర్రెలు అమ్మండి",search_ph:"జాతిని వెతకండి, ఉదా. నెల్లూరు…",
+      cat_title:"జాతి వారీగా షాపింగ్",cat_sub:"ఈ వారం ట్రెండింగ్‌లో ఉన్న జాతులు",
+      feat_title:"ఫీచర్డ్ జంతువులు",feat_sub:"ఎంపిక చేసిన, వెరిఫైడ్ జంతువులు",
+      latest_title:"తాజా జాబితాలు",latest_sub:"గత 24 గంటల్లో చేర్చినవి",
+      deals_title:"ఈరోజు ఆఫర్లు",deals_sub:"అత్యధిక తగ్గింపులు",
+      sellers_title:"మీ దగ్గరలోని టాప్ విక్రేతలు",sellers_sub:"అత్యుత్తమ రేటింగ్ ఉన్న ఫారాలు",
+      testi_title:"రైతులు ఏమంటున్నారు",
+      shop_title:"అన్ని గొర్రెల జాబితాలు",shop_sub:"ఆరోగ్యకరమైన జంతువులు దొరికాయి",
+      filters_h:"ఫిల్టర్‌లు",apply_filters:"ఫిల్టర్‌లు వర్తింపజేయండి",clear_filters:"అన్ని ఫిల్టర్‌లను తీసివేయండి",
+      f_state:"రాష్ట్రం",f_breed:"జాతి",f_price:"ధర పరిధి",f_weight:"బరువు (కేజీ)",f_gender:"లింగం",
+      f_male:"మగ (పొట్టేలు)",f_female:"ఆడ (గొర్రె)",f_other:"ఇతరాలు",f_vaconly:"వ్యాక్సిన్ చేసినవి మాత్రమే",
+      f_veronly:"వెరిఫైడ్ విక్రేత మాత్రమే",f_disc:"తగ్గింపులో ఉన్నవి",
+      sell_title:"మీ గొర్రెను అమ్మకానికి పెట్టండి",sell_sub:"వెరిఫైడ్ జాబితాలు 3 రెట్లు వేగంగా అమ్ముడవుతాయి. ఖచ్చితమైన వివరాలు నింపండి.",
+      auction_title:"లైవ్ వేలం",auction_sub:"ప్రీమియం జంతువులపై రియల్ టైమ్‌లో బిడ్ చేయండి",
+      chat_title:"సందేశాలు",chat_sub:"కొనుగోలుదారులు & విక్రేతలతో నేరుగా చాట్ చేయండి",
+      cart_title:"మీ కార్ట్",wish_title:"విష్‌లిస్ట్",
+      auth_title:"SANTHA మార్కెట్‌కు స్వాగతం",
+      foot_company:"కంపెనీ",foot_about:"మా గురించి",foot_careers:"కెరీర్‌లు",foot_blog:"బ్లాగ్",foot_contact:"సంప్రదించండి",
+      foot_market:"మార్కెట్‌ప్లేస్",foot_shopsheep:"గొర్రెలు కొనండి",foot_sellsheep:"గొర్రెలు అమ్మండి",foot_auctions:"వేలం",foot_breedguide:"జాతుల గైడ్",
+      foot_support:"సహాయం",foot_help:"హెల్ప్ సెంటర్",foot_faq:"తరచుగా అడిగే ప్రశ్నలు",foot_shipping:"రవాణా",foot_returns:"రిటర్న్‌లు",
+      foot_legal:"చట్టపరమైనవి",foot_privacy:"గోప్యతా విధానం",foot_terms:"వినియోగ నిబంధనలు",foot_sellerpolicy:"విక్రేత విధానం",
+      addToCart:"కార్ట్‌కు జోడించండి",buyNow:"ఇప్పుడే కొనండి",quickViewLbl:"త్వరిత వీక్షణ",compareLbl:"పోల్చండి",chatSellerLbl:"విక్రేతతో చాట్",callSellerLbl:"విక్రేతకు కాల్",
+      vaccinatedLbl:"వ్యాక్సినేటెడ్",notVaccinatedLbl:"వ్యాక్సిన్ చేయలేదు",inStockLbl:"స్టాక్‌లో ఉంది",verifiedLbl:"వెరిఫైడ్"},
+};
+["hi","ta","kn","ml","mr"].forEach(l=>I18N[l]=I18N.en);
+let currentLang = 'te';
+function tt(key){ return (I18N[currentLang]&&I18N[currentLang][key]) || I18N.en[key] || key; }
+function setLang(l){
+  currentLang = l;
+  const d=I18N[l]||I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n'); if(d[k]) el.innerHTML=d[k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph'); if(d[k]) el.placeholder=d[k];});
+  renderHome();
+  const activeView = document.querySelector('.view.active').id.replace('view-','');
+  if(activeView==='shop') renderShop();
+  if(activeView==='cart') renderCart();
+  if(activeView==='wishlist') renderWishlist();
+  if(activeView==='auction') renderAuctions();
+  if(activeView==='chat') renderChat();
+}
+
+/* ================= VIEW ROUTER ================= */
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active', b.dataset.nav===name));
+  document.getElementById('siteFooter').style.display = name==='admin' ? 'none':'block';
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='shop') renderShop();
+  if(name==='cart') renderCart();
+  if(name==='wishlist') renderWishlist();
+  if(name==='auction') renderAuctions();
+  if(name==='chat') renderChat();
+  if(name==='dashboard') renderDashboard();
+  if(name==='admin') renderAdmin();
+}
+function toggleMobileNav(){document.getElementById('navlinks').style.display = document.getElementById('navlinks').style.display==='flex'?'none':'flex';document.getElementById('navlinks').style.flexDirection='column';document.getElementById('navlinks').style.position='absolute';document.getElementById('navlinks').style.top='100%';document.getElementById('navlinks').style.left='0';document.getElementById('navlinks').style.right='0';document.getElementById('navlinks').style.background='var(--forest)';document.getElementById('navlinks').style.padding='10px 20px';}
+
+/* ================= TOAST / MODAL ================= */
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(window._toastT);
+  window._toastT=setTimeout(()=>t.classList.remove('show'),2600);
+}
+function openModal(id){document.getElementById(id).classList.add('active');}
+function closeModal(id){document.getElementById(id).classList.remove('active');}
+function toggleNotif(){document.getElementById('notifModal').classList.toggle('active');}
+function authTab(btn,tab){
+  document.querySelectorAll('.auth-tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('authOtp').style.display = tab==='otp'?'block':'none';
+  document.getElementById('authEmail').style.display = tab==='email'?'block':'none';
+  document.getElementById('authRegister').style.display = tab==='register'?'block':'none';
+  document.getElementById('authSocial').style.display = tab==='register'?'none':'flex';
+}
+
+/* ================= AUTH (Firebase) ================= */
+let currentUser = null;
+function handleProfileClick(){ currentUser ? showView('dashboard') : openModal('authModal'); }
+
+async function doLogin(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  if(!email || !password){ toast('Enter email & password'); return; }
+  try{
+    await window.fbLogin(email, password);
+    closeModal('authModal');
+    toast('✅ Logged in — welcome back!');
+  }catch(e){ toast('❌ '+(e.message||'Login failed')); }
+}
+async function doRegister(){
+  const data = {
+    name: document.getElementById('regName').value.trim(),
+    phone: document.getElementById('regPhone').value.trim(),
+    email: document.getElementById('regEmail').value.trim(),
+    password: document.getElementById('regPassword').value,
+    state: document.getElementById('regState').value.trim(),
+    district: document.getElementById('regDistrict').value.trim(),
+    village: document.getElementById('regVillage').value.trim(),
+    pincode: document.getElementById('regPincode').value.trim(),
+    language: document.getElementById('regLang').value,
+  };
+  const confirm = document.getElementById('regConfirm').value;
+  if(!data.name || !data.email || !data.password){ toast('Fill in name, email & password'); return; }
+  if(data.password !== confirm){ toast('❌ Passwords do not match'); return; }
+  try{
+    await window.fbRegister(data);
+    closeModal('authModal');
+    toast('✅ Account created — welcome to SANTHA!');
+  }catch(e){ toast('❌ '+(e.message||'Registration failed')); }
+}
+async function sendOtp(){
+  const phone = document.getElementById('otpPhone').value.trim();
+  if(!phone){ toast('Enter your mobile number'); return; }
+  try{
+    await window.fbSendOtp(phone);
+    document.getElementById('otpCodeWrap').style.display='block';
+    toast('📩 OTP sent');
+  }catch(e){ toast('❌ '+(e.message||'Could not send OTP')); }
+}
+async function confirmOtp(){
+  const code = document.getElementById('otpCode').value.trim();
+  if(!code){ toast('Enter the OTP code'); return; }
+  try{
+    await window.fbConfirmOtp(code);
+    closeModal('authModal');
+    toast('✅ Logged in — welcome back!');
+  }catch(e){ toast('❌ '+(e.message||'Invalid OTP')); }
+}
+function doLogout(){
+  window.fbLogout();
+  showView('home');
+  toast('👋 Logged out');
+}
+window.onFbAuthChange = function(user){
+  currentUser = user;
+  const btn = document.getElementById('profileIconBtn');
+  btn.textContent = user ? '🧑' : '👤';
+  btn.title = user ? (user.displayName || user.email || user.phoneNumber || 'Account') : 'Login';
+  document.getElementById('dashName').textContent = user ? (user.displayName || user.email || user.phoneNumber || 'My Account') : 'Ganesh Reddy';
+  document.getElementById('dashLoc').textContent = user ? (user.email || user.phoneNumber || '') : 'Anantapur, Andhra Pradesh';
+  if(myListingsUnsub){ myListingsUnsub(); myListingsUnsub=null; }
+  if(user){
+    myListingsUnsub = window.fbListenMyListings(user.uid, rows=>{ myFsListings = rows; if(document.querySelector('.view.active').id==='view-dashboard') renderDashboard(); });
+  } else {
+    myFsListings = [];
+  }
+  if(document.querySelector('.view.active').id==='view-dashboard') renderDashboard();
+};
+
+/* ================= FIRESTORE LISTINGS STATE ================= */
+let myFsListings = [];      // current seller's own Firestore listings (raw docs)
+let myListingsUnsub = null;
+let pendingUnsub = null;
+let approvedUnsub = null;
+let nextFsListingId = 100000;
+const fsIdToLocalId = {};
+
+function startFsListingListeners(){
+  pendingUnsub = window.fbListenPending(rows=>{
+    fsPending = rows;
+    if(document.querySelector('.view.active').id==='view-admin') renderAdmin();
+  });
+  approvedUnsub = window.fbListenApproved(rows=>{
+    rows.forEach(r=>{
+      let localId = fsIdToLocalId[r.id];
+      if(!localId){ localId = nextFsListingId++; fsIdToLocalId[r.id] = localId; }
+      const entry = {
+        id: localId, fsId: r.id,
+        name: r.name||'Sheep Listing', breed: r.breed||'Nellore', weight: r.weight||20, age: r.age||1,
+        gender: r.gender||'Male', price: r.price||0, offerPrice: r.offerPrice||r.price||0, discount: r.discount||0,
+        vaccinated: !!r.vaccinated, verified: !!r.verified, rating: r.rating||4.5, stock: r.stock||1,
+        state: r.state||'', district: r.district||'', location: r.location||'',
+        earTag: r.earTag||('SN-'+localId), img: r.img||IMAGES[localId%IMAGES.length]
+      };
+      const idx = listings.findIndex(l=>l.fsId===r.id);
+      if(idx>-1) listings[idx]=entry; else listings.push(entry);
+    });
+    const activeView = document.querySelector('.view.active').id.replace('view-','');
+    if(activeView==='shop') renderShop();
+    if(activeView==='home') renderHome();
+  });
+}
+let fsPending = [];
+
+/* ================= SELL FORM SUBMIT ================= */
+let sellFiles = [];
+function handleSellFiles(fileList){
+  sellFiles = Array.from(fileList).slice(0,8);
+  document.getElementById('sellUploadPreview').innerHTML = sellFiles.map((f,i)=>{
+    const url = URL.createObjectURL(f);
+    return f.type.startsWith('video')
+      ? `<video src="${url}" style="width:90px;height:90px;object-fit:cover;border-radius:8px" muted></video>`
+      : `<img src="${url}" style="width:90px;height:90px;object-fit:cover;border-radius:8px">`;
+  }).join('');
+  document.getElementById('sellUploadStatus').textContent = sellFiles.length ? `${sellFiles.length} file(s) selected` : '';
+}
+async function submitListing(){
+  if(!currentUser){ toast('Please login to publish a listing'); openModal('authModal'); return; }
+  const title = document.getElementById('sellTitle').value.trim();
+  const price = +document.getElementById('sellPrice').value || 0;
+  if(!title || !price){ toast('Please fill in the animal title and expected price'); return; }
+
+  const statusEl = document.getElementById('sellUploadStatus');
+  let mediaUrls = [];
+  try{
+    for(let i=0;i<sellFiles.length;i++){
+      const file = sellFiles[i];
+      const path = `listings/${currentUser.uid}/${Date.now()}_${i}_${file.name}`;
+      statusEl.textContent = `Uploading ${i+1} of ${sellFiles.length}…`;
+      const url = await window.fbUploadFile(file, path, pct=>{ statusEl.textContent = `Uploading ${i+1} of ${sellFiles.length}… ${pct}%`; });
+      mediaUrls.push(url);
+    }
+  }catch(e){ toast('❌ Upload failed: '+(e.message||'')); statusEl.textContent=''; return; }
+
+  const data = {
+    name: title,
+    breed: document.getElementById('sellBreed').value,
+    gender: document.getElementById('sellGender').value,
+    age: +document.getElementById('sellAge').value || 1,
+    weight: +document.getElementById('sellWeight').value || 20,
+    color: document.getElementById('sellColor').value.trim(),
+    earTag: document.getElementById('sellEarTag').value.trim(),
+    stock: +document.getElementById('sellQty').value || 1,
+    vaccinated: document.getElementById('sellVaccination').value === 'Fully Vaccinated',
+    price, offerPrice: price, discount: 0,
+    location: document.getElementById('sellLocation').value.trim(),
+    negotiable: document.getElementById('sellNegotiable').checked,
+    pickup: document.getElementById('sellPickup').checked,
+    delivery: document.getElementById('sellDelivery').checked,
+    transport: document.getElementById('sellTransport').checked,
+    description: document.getElementById('sellDescription').value.trim(),
+    verified: false, rating: 4.5,
+    images: mediaUrls,
+    img: mediaUrls[0] || IMAGES[Math.floor(Math.random()*IMAGES.length)]
+  };
+  try{
+    await window.fbAddListing(data);
+    toast('✅ Listing published! It will appear after quick review.');
+    sellFiles = [];
+    document.getElementById('sellUploadPreview').innerHTML = '';
+    statusEl.textContent = '';
+    setTimeout(()=>showView('shop'),1200);
+  }catch(e){ toast('❌ '+(e.message||'Could not publish listing')); }
+}
+
+/* ================= CART / WISHLIST STATE ================= */
+let cart = {};      // id -> qty
+let wishlist = new Set();
+function updateBadges(){
+  document.getElementById('cartBadge').textContent = Object.values(cart).reduce((a,b)=>a+b,0);
+  document.getElementById('wishBadge').textContent = wishlist.size;
+}
+function addToCart(id){ cart[id]=(cart[id]||0)+1; updateBadges(); toast('🛒 Added to cart'); }
+function toggleWish(id){
+  if(wishlist.has(id)){wishlist.delete(id); toast('Removed from wishlist');}
+  else {wishlist.add(id); toast('♡ Added to wishlist');}
+  updateBadges();
+  document.querySelectorAll(`.fav-btn[data-id="${id}"]`).forEach(b=>b.classList.toggle('active',wishlist.has(id)));
+}
+function buyNow(id){ addToCart(id); showView('cart'); }
+
+/* ================= TICKET CARD RENDER ================= */
+function ticketCard(l){
+  const isFav = wishlist.has(l.id);
+  return `
+  <div class="ticket">
+    <div class="ticket-media">
+      <img src="${l.img}" alt="${l.breed}" loading="lazy">
+      <span class="stub mono">#${l.earTag}</span>
+      ${l.verified?'<span class="verified">✔ Verified</span>':''}
+      ${l.discount?`<span class="discount-flag">${l.discount}% OFF</span>`:''}
+      <button class="fav-btn ${isFav?'active':''}" data-id="${l.id}" onclick="toggleWish(${l.id})">${isFav?'♥':'♡'}</button>
+    </div>
+    <div class="punchline"></div>
+    <div class="ticket-body">
+      <h4>${l.name}</h4>
+      <div class="tmeta">
+        <span>Breed: <b>${l.breed}</b></span>
+        <span>Wt: <b>${l.weight}kg</b></span>
+        <span>Age: <b>${l.age}y</b></span>
+        <span>${l.gender==='Male'?'♂':'♀'} ${l.gender}</span>
+      </div>
+      <div class="tags">
+        ${l.vaccinated?`<span class="tag vac">✓ ${tt('vaccinatedLbl')}</span>`:`<span class="tag vac" style="background:#FCE8E6;color:#B3261E">${tt('notVaccinatedLbl')}</span>`}
+        <span class="tag loc">📍 ${l.district}</span>
+        <span class="tag rating">★ ${l.rating}</span>
+      </div>
+      <div class="price-row">
+        <span class="now mono">₹${l.offerPrice.toLocaleString('en-IN')}</span>
+        ${l.discount?`<span class="was mono">₹${l.price.toLocaleString('en-IN')}</span>`:''}
+        <span style="margin-left:auto;font-size:11px;color:${l.stock<3?'var(--danger)':'var(--ink-soft)'}">${l.stock} ${tt('inStockLbl')}</span>
+      </div>
+      <div class="ticket-actions">
+        <button class="act-cart" onclick="addToCart(${l.id})">🛒 ${tt('addToCart')}</button>
+        <button class="act-buy" onclick="buyNow(${l.id})">${tt('buyNow')}</button>
+      </div>
+    </div>
+    <div class="icon-row">
+      <button title="${tt('quickViewLbl')}" onclick="quickView(${l.id})">👁</button>
+      <button title="${tt('compareLbl')}" onclick="toast('Added to compare list')">⇄</button>
+      <button title="${tt('chatSellerLbl')}" onclick="showView('chat')">💬</button>
+      <button title="${tt('callSellerLbl')}" onclick="toast('📞 Calling seller… (demo)')">📞</button>
+    </div>
+  </div>`;
+}
+function quickView(id){
+  const l = listings.find(x=>x.id===id);
+  document.getElementById('quickViewBody').innerHTML = `
+    <button class="close" onclick="closeModal('quickViewModal')">✕</button>
+    <img src="${l.img}" style="width:100%;border-radius:12px;aspect-ratio:16/9;object-fit:cover;margin-bottom:14px">
+    <h3>${l.name}</h3>
+    <div class="tmeta" style="margin:10px 0">
+      <span>Breed: <b>${l.breed}</b></span><span>Wt: <b>${l.weight}kg</b></span><span>Age: <b>${l.age}y</b></span><span>${l.gender}</span>
+    </div>
+    <div class="tags" style="margin-bottom:14px">
+      ${l.vaccinated?'<span class="tag vac">✓ Vaccinated</span>':''}
+      <span class="tag loc">📍 ${l.location}</span>
+      <span class="tag rating">★ ${l.rating} seller rating</span>
+      ${l.verified?'<span class="tag vac">✔ Verified Seller</span>':''}
+    </div>
+    <div class="price-row"><span class="now mono" style="font-size:24px">₹${l.offerPrice.toLocaleString('en-IN')}</span>${l.discount?`<span class="was mono">₹${l.price.toLocaleString('en-IN')}</span>`:''}</div>
+    <div class="ticket-actions" style="margin-top:14px">
+      <button class="act-cart" onclick="addToCart(${l.id})">🛒 Add to Cart</button>
+      <button class="act-buy" onclick="buyNow(${l.id})">Buy Now</button>
+    </div>`;
+  openModal('quickViewModal');
+}
+
+/* ================= HOME RENDER ================= */
+function renderHome(){
+  document.getElementById('catStrip').innerHTML = BREEDS.slice(0,8).map((b,i)=>`
+    <div class="cat-chip" onclick="showView('shop')">
+      <img src="${IMAGES[i%IMAGES.length]}" alt="${b}">
+      <b>${b}</b><span>${20+i*7} listings</span>
+    </div>`).join('');
+
+  document.getElementById('featuredGrid').innerHTML = listings.filter(l=>l.verified).slice(0,4).map(ticketCard).join('');
+  document.getElementById('latestGrid').innerHTML = listings.slice(80,84).map(ticketCard).join('');
+  document.getElementById('dealsGrid').innerHTML = listings.filter(l=>l.discount>=15).slice(0,4).map(ticketCard).join('');
+
+  const sellers = [
+    {name:"Venkatesh Farms",loc:"Kurnool, AP",rating:4.9,img:IMAGES[1]},
+    {name:"Sri Lakshmi Livestock",loc:"Warangal, TS",rating:4.8,img:IMAGES[2]},
+    {name:"Golla Bros Traders",loc:"Bellary, KA",rating:4.7,img:IMAGES[3]},
+  ];
+  document.getElementById('sellerGrid').innerHTML = sellers.map(s=>`
+    <div class="seller-card">
+      <img src="${s.img}"><div><b>${s.name}</b><div class="sub">📍 ${s.loc} · ★ ${s.rating} rating</div></div>
+    </div>`).join('');
+
+  document.getElementById('testiGrid').innerHTML = TESTIMONIALS.map(t=>`
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p>"${t.text}"</p>
+      <div class="who"><img src="${t.img}"><div><b>${t.name}</b><span>${t.loc}</span></div></div>
+    </div>`).join('');
+}
+
+/* ================= SHOP RENDER ================= */
+let currentPage = 1;
+function initShopFilters(){
+  document.getElementById('fState').innerHTML = STATES.map(s=>`<label class="fopt"><input type="checkbox" value="${s}" class="fState" onchange="renderShop()"> ${s}</label>`).join('');
+  document.getElementById('fBreed').innerHTML = BREEDS.map(b=>`<label class="fopt"><input type="checkbox" value="${b}" class="fBreed" onchange="renderShop()"> ${b}</label>`).join('');
+}
+function clearFilters(){
+  document.querySelectorAll('.filters input[type=checkbox]').forEach(c=>c.checked=false);
+  document.getElementById('fPrice').value=35000;
+  document.getElementById('fWeight').value=60;
+  document.getElementById('shopSearch').value='';
+  renderShop();
+}
+function renderShop(){
+  const maxPrice = +document.getElementById('fPrice').value;
+  const maxWeight = +document.getElementById('fWeight').value;
+  document.getElementById('fPriceVal').textContent = '₹'+maxPrice.toLocaleString('en-IN');
+  document.getElementById('fWeightVal').textContent = maxWeight+'kg';
+  const states = [...document.querySelectorAll('.fState:checked')].map(c=>c.value);
+  const breeds = [...document.querySelectorAll('.fBreed:checked')].map(c=>c.value);
+  const genders = [...document.querySelectorAll('.fGender:checked')].map(c=>c.value);
+  const vaccOnly = document.getElementById('fVaccinated').checked;
+  const verOnly = document.getElementById('fVerified').checked;
+  const discOnly = document.getElementById('fDiscount').checked;
+  const q = (document.getElementById('shopSearch').value||'').toLowerCase();
+  const sort = document.getElementById('sortSel').value;
+
+  let results = listings.filter(l=>
+    l.offerPrice<=maxPrice && l.weight<=maxWeight &&
+    (!states.length || states.includes(l.state)) &&
+    (!breeds.length || breeds.includes(l.breed)) &&
+    (!genders.length || genders.includes(l.gender)) &&
+    (!vaccOnly || l.vaccinated) && (!verOnly || l.verified) && (!discOnly || l.discount>0) &&
+    (!q || l.name.toLowerCase().includes(q) || l.breed.toLowerCase().includes(q) || l.location.toLowerCase().includes(q))
+  );
+  if(sort==='priceLow') results.sort((a,b)=>a.offerPrice-b.offerPrice);
+  if(sort==='priceHigh') results.sort((a,b)=>b.offerPrice-a.offerPrice);
+  if(sort==='discount') results.sort((a,b)=>b.discount-a.discount);
+  if(sort==='rating') results.sort((a,b)=>b.rating-a.rating);
+  if(sort==='latest') results.sort((a,b)=>b.id-a.id);
+
+  document.getElementById('resultCount').textContent = results.length;
+  const perPage=12;
+  const totalPages = Math.max(1,Math.ceil(results.length/perPage));
+  if(currentPage>totalPages) currentPage=1;
+  const pageItems = results.slice((currentPage-1)*perPage, currentPage*perPage);
+  document.getElementById('shopGrid').innerHTML = pageItems.length ? pageItems.map(ticketCard).join('') :
+    `<div class="empty-state" style="grid-column:1/-1"><div class="ic">🐑</div><b>No sheep match your filters</b><p>Try widening your price or weight range.</p></div>`;
+
+  let pag='';
+  for(let p=1;p<=totalPages;p++) pag+=`<button class="${p===currentPage?'active':''}" onclick="currentPage=${p};renderShop()">${p}</button>`;
+  document.getElementById('pagination').innerHTML = totalPages>1?pag:'';
+
+  document.getElementById('quickChips').innerHTML = ['Nearby','Latest','Discount 10%+','Top Rated'].map(c=>`<span class="filter-chip">${c}</span>`).join('');
+}
+
+/* ================= CART / WISHLIST RENDER ================= */
+let selectedPay = 'upi';
+function renderCart(){
+  const ids = Object.keys(cart).filter(id=>cart[id]>0);
+  if(!ids.length){
+    document.getElementById('cartContent').innerHTML = `<div class="empty-state"><div class="ic">🛒</div><b>Your cart is empty</b><p>Browse sheep and add them to your cart.</p><button class="btn-primary" style="margin-top:16px" onclick="showView('shop')">Browse Sheep</button></div>`;
+    return;
+  }
+  let subtotal=0;
+  const rows = ids.map(id=>{
+    const l = listings.find(x=>x.id==id); const qty = cart[id]; subtotal += l.offerPrice*qty;
+    return `<div class="cart-row">
+      <img src="${l.img}">
+      <div class="info"><b>${l.name}</b><span>${l.breed} · ${l.weight}kg · ${l.location}</span></div>
+      <div class="qty">
+        <button onclick="changeQty(${id},-1)">−</button><span class="mono">${qty}</span><button onclick="changeQty(${id},1)">+</button>
+      </div>
+      <div class="mono" style="width:90px;text-align:right;font-weight:700">₹${(l.offerPrice*qty).toLocaleString('en-IN')}</div>
+      <button onclick="changeQty(${id},-99)" style="color:var(--danger);font-size:16px">✕</button>
+    </div>`;
+  }).join('');
+  const delivery = subtotal>15000?0:499;
+  const total = subtotal+delivery;
+  document.getElementById('cartContent').innerHTML = `
+    <div class="cart-wrap">
+      <div>${rows}</div>
+      <div class="summary-box">
+        <h4 style="margin-bottom:10px">Order Summary</h4>
+        <div class="summary-row"><span>Subtotal</span><span class="mono">₹${subtotal.toLocaleString('en-IN')}</span></div>
+        <div class="summary-row"><span>Delivery</span><span class="mono">${delivery===0?'FREE':'₹'+delivery}</span></div>
+        <div class="promo-row"><input type="text" placeholder="Promo code"><button class="btn-sell" style="background:var(--grey);color:var(--ink)" onclick="toast('Promo applied: 5% off!')">Apply</button></div>
+        <div class="summary-row total"><span>Total</span><span class="mono">₹${total.toLocaleString('en-IN')}</span></div>
+        <div style="font-size:12.5px;font-weight:600;margin:14px 0 6px;color:var(--ink-soft)">Payment Method</div>
+        <div class="pay-methods" id="payMethods">
+          ${['upi','card','netbanking','cod','wallet','emi'].map(p=>`<div class="pay-opt ${p===selectedPay?'sel':''}" onclick="selectPay('${p}')">${payLabel(p)}</div>`).join('')}
+        </div>
+        <button class="btn-primary" style="width:100%" onclick="checkout()">Place Order</button>
+      </div>
+    </div>`;
+}
+function payLabel(p){return {upi:'📱 UPI / PhonePe / GPay',card:'💳 Credit / Debit Card',netbanking:'🏦 Net Banking',cod:'💵 Cash on Delivery',wallet:'👛 SANTHA Wallet',emi:'📆 EMI'}[p];}
+function selectPay(p){selectedPay=p; renderCart();}
+function changeQty(id,delta){
+  cart[id]=(cart[id]||0)+delta;
+  if(cart[id]<=0) delete cart[id];
+  updateBadges(); renderCart();
+}
+function checkout(){ cart={}; updateBadges(); toast('✅ Order placed! Invoice sent to your email.'); renderCart(); }
+
+function renderWishlist(){
+  const items = listings.filter(l=>wishlist.has(l.id));
+  document.getElementById('wishlistGrid').innerHTML = items.length ? items.map(ticketCard).join('') :
+   `<div class="empty-state" style="grid-column:1/-1"><div class="ic">♡</div><b>No saved animals yet</b><p>Tap the heart icon on any listing to save it here.</p></div>`;
+}
+
+/* ================= AUCTIONS ================= */
+let auctions = [
+  {id:1,name:"Prize Nellore Ram",breed:"Nellore",img:IMAGES[0],bid:24500,increment:500,end:Date.now()+1000*60*14,history:["₹22,000 · Ravi K.","₹23,500 · Farm2Home","₹24,500 · Ganesh R."]},
+  {id:2,name:"Champion Bellary Ram",breed:"Bellary",img:IMAGES[2],bid:31000,increment:1000,end:Date.now()+1000*60*38,history:["₹28,000 · Suresh T.","₹31,000 · Lakshmi D."]},
+  {id:3,name:"Elite Madgyal Ewe",breed:"Madgyal",img:IMAGES[4],bid:18200,increment:300,end:Date.now()+1000*60*6,history:["₹17,000 · Venkat","₹18,200 · KrishnaFarms"]},
+];
+function renderAuctions(){
+  document.getElementById('auctionGrid').innerHTML = auctions.map(a=>`
+    <div class="auction-card" id="auction-${a.id}">
+      <div class="auction-media">
+        <img src="${a.img}">
+        <span class="live-pill"><span class="live-dot"></span>LIVE</span>
+        <span class="timer-pill" id="timer-${a.id}">--:--</span>
+      </div>
+      <div class="auction-body">
+        <b style="font-family:'Fraunces'">${a.name}</b><div style="font-size:12px;color:var(--ink-soft)">${a.breed}</div>
+        <div class="bid-now"><b class="mono">₹${a.bid.toLocaleString('en-IN')}</b><span>current highest bid</span></div>
+        <div class="bid-btns">
+          <button class="place" onclick="placeBid(${a.id})">Bid ₹${a.increment} More</button>
+          <button class="auto" onclick="toast('🤖 Auto-bid enabled up to your max')">Auto Bid</button>
+        </div>
+        <div class="bid-history">${a.history.slice(-3).reverse().map(h=>`<div>${h}</div>`).join('')}</div>
+      </div>
+    </div>`).join('');
+  clearInterval(window._auctionTick);
+  window._auctionTick = setInterval(tickAuctions,1000);
+  tickAuctions();
+}
+function tickAuctions(){
+  auctions.forEach(a=>{
+    const el = document.getElementById('timer-'+a.id);
+    if(!el) return;
+    let diff = Math.max(0,a.end-Date.now());
+    const m = Math.floor(diff/60000), s = Math.floor((diff%60000)/1000);
+    el.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(diff<=0) el.textContent='ENDED';
+  });
+}
+function placeBid(id){
+  const a = auctions.find(x=>x.id===id);
+  a.bid += a.increment;
+  a.history.push(`₹${a.bid.toLocaleString('en-IN')} · You`);
+  toast('🔨 Bid placed successfully!');
+  renderAuctions();
+}
+
+/* ================= CHAT ================= */
+const conversations = [
+  {id:1,name:"Venkatesh Farms",img:IMAGES[1],last:"Is the Nellore ram still available?",msgs:[
+    {who:'them',text:'Namaste! Is the Nellore ram still available?'},
+    {who:'me',text:'Yes, available. 38kg, fully vaccinated.'},
+    {who:'them',text:'Can you share a live video?'}]},
+  {id:2,name:"Sri Lakshmi Livestock",img:IMAGES[2],last:"Price can be negotiated slightly.",msgs:[
+    {who:'them',text:'Price can be negotiated slightly for bulk order.'},
+    {who:'me',text:'I need 5 ewes, what is your best price?'}]},
+  {id:3,name:"Golla Bros Traders",img:IMAGES[3],last:"Pickup available tomorrow.",msgs:[
+    {who:'them',text:'Pickup available tomorrow morning from Bellary.'}]},
+];
+let activeChat = 1;
+function renderChat(){
+  document.getElementById('chatWrap').innerHTML = `
+    <div class="chat-list">
+      ${conversations.map(c=>`<div class="chat-item ${c.id===activeChat?'active':''}" onclick="openChat(${c.id})">
+        <img src="${c.img}"><div><b>${c.name}</b><span>${c.last}</span></div></div>`).join('')}
+    </div>
+    <div class="chat-main" id="chatMain"></div>`;
+  renderChatMain();
+}
+function openChat(id){activeChat=id; renderChat();}
+function renderChatMain(){
+  const c = conversations.find(x=>x.id===activeChat);
+  const main = document.getElementById('chatMain');
+  main.innerHTML = `
+    <div class="chat-head">
+      <div class="who"><img src="${c.img}"><b>${c.name}</b></div>
+      <div class="chat-head-icons">
+        <button title="Share location" onclick="toast('📍 Location shared')">📍</button>
+        <button title="Voice message" onclick="toast('🎙️ Voice message recorded')">🎙</button>
+        <button title="Video call" onclick="toast('📹 Starting video call…')">📹</button>
+        <button title="Call" onclick="toast('📞 Calling…')">📞</button>
+      </div>
+    </div>
+    <div class="chat-body" id="chatBody">${c.msgs.map(m=>`<div class="bubble ${m.who}">${m.text}</div>`).join('')}</div>
+    <div class="chat-input">
+      <input type="text" id="chatInputBox" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendChat()">
+      <button onclick="sendChat()">➤</button>
+    </div>`;
+  main.querySelector('.chat-body').scrollTop = 9999;
+}
+function sendChat(){
+  const box = document.getElementById('chatInputBox');
+  if(!box.value.trim()) return;
+  const c = conversations.find(x=>x.id===activeChat);
+  c.msgs.push({who:'me',text:box.value});
+  box.value='';
+  renderChatMain();
+  setTimeout(()=>{c.msgs.push({who:'them',text:'Sure, let me check and get back to you.'}); renderChatMain();},900);
+}
+
+/* ================= DASHBOARD / ADMIN ================= */
+function renderDashboard(){
+  if(!currentUser){
+    document.getElementById('myListingsBody').innerHTML = `<tr><td colspan="5" style="color:var(--ink-soft);padding:14px">Login to see your listings.</td></tr>`;
+    return;
+  }
+  if(!myFsListings.length){
+    document.getElementById('myListingsBody').innerHTML = `<tr><td colspan="5" style="color:var(--ink-soft);padding:14px">No listings yet — publish your first sheep!</td></tr>`;
+    return;
+  }
+  document.getElementById('myListingsBody').innerHTML = myFsListings.map(l=>`
+    <tr><td>${l.name||''}</td><td>${l.breed||''}</td><td class="mono">₹${(l.offerPrice||l.price||0).toLocaleString('en-IN')}</td>
+    <td><span class="status-pill ${l.status||'pending'}">${(l.status||'pending').replace(/^./,c=>c.toUpperCase())}</span></td><td>${l.views||0}</td></tr>`).join('');
+}
+function renderAdmin(){
+  if(!fsPending.length){
+    document.getElementById('adminBody').innerHTML = `<tr><td colspan="6" style="color:var(--ink-soft);padding:14px">No listings awaiting approval.</td></tr>`;
+    return;
+  }
+  document.getElementById('adminBody').innerHTML = fsPending.map(l=>`
+    <tr id="admin-row-${l.id}">
+      <td>${l.sellerName||'Seller'}</td><td>${l.name||''}</td><td>${l.breed||''}</td><td class="mono">₹${(l.offerPrice||l.price||0).toLocaleString('en-IN')}</td>
+      <td><span class="status-pill pending">Pending</span></td>
+      <td>
+        <button onclick="adminAction('${l.id}','approved')" style="color:var(--forest);font-weight:600;margin-right:8px">Approve</button>
+        <button onclick="adminAction('${l.id}','rejected')" style="color:var(--danger);font-weight:600">Reject</button>
+      </td>
+    </tr>`).join('');
+}
+async function adminAction(id,status){
+  try{
+    await window.fbSetListingStatus(id,status);
+    toast(status==='approved'?'✅ Listing approved':'❌ Listing rejected');
+  }catch(e){ toast('❌ '+(e.message||'Action failed')); }
+}
+
+/* ================= INIT ================= */
+document.getElementById('heroSearchTop').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ document.getElementById('shopSearch') && (document.getElementById('shopSearch').value=e.target.value); showView('shop'); setTimeout(()=>{document.getElementById('shopSearch').value=e.target.value; renderShop();},50); }
+});
+initShopFilters();
+renderHome();
+updateBadges();
+setLang('te');
+(function waitForFirebase(){
+  if(window.fbListenPending && window.fbListenApproved){ startFsListingListeners(); }
+  else setTimeout(waitForFirebase, 50);
+})();
+</script>
+</body>
+</html>
