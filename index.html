@@ -22,8 +22,8 @@
   --radius:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--grey);line-height:1.5;}
+html{scroll-behavior:smooth;width:100%;overflow-x:hidden;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--grey);line-height:1.5;width:100%;overflow-x:hidden;}
 h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.01em;}
 .mono{font-family:'IBM Plex Mono',monospace;}
 a{color:inherit;text-decoration:none;}
@@ -67,9 +67,19 @@ nav.mainnav .container{display:flex;align-items:center;gap:24px;padding-top:14px
 
 /* ---------- HERO ---------- */
 .hero{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;
-  background:linear-gradient(120deg, rgba(18,61,21,.92) 0%, rgba(27,94,32,.78) 45%, rgba(27,94,32,.4) 100%),
-  url('https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=1800&auto=format&fit=crop') center 30%/cover;
+  background:linear-gradient(120deg, var(--forest-dark) 0%, var(--forest) 55%, var(--forest-light) 100%);
 }
+.ap-map-bg{position:absolute;top:0;right:0;height:100%;width:56%;z-index:1;opacity:.9;pointer-events:none;}
+.ap-map-bg .ap-outline{fill:rgba(249,168,37,.05);stroke:rgba(249,168,37,.4);stroke-width:2;stroke-dasharray:5 4;}
+.ap-map-bg .ap-link{fill:none;stroke:rgba(249,168,37,.35);stroke-width:1.5;stroke-dasharray:3 5;}
+.ap-map-bg .hub-core{fill:var(--gold);}
+.ap-map-bg .hub-ring{fill:none;stroke:var(--gold);stroke-width:1.5;opacity:.7;transform-origin:center;transform-box:fill-box;animation:mapPulse 2.6s ease-out infinite;}
+.ap-map-bg .hub-label{font-family:'IBM Plex Mono';font-size:12px;fill:#eaf2ea;letter-spacing:.02em;}
+.ap-map-bg .hub-count{font-family:'IBM Plex Mono';font-size:9.5px;fill:var(--gold);}
+.ap-map-bg .map-caption{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.15em;text-transform:uppercase;fill:#cfe0cf;}
+@keyframes mapPulse{0%{transform:scale(.4);opacity:.9;}100%{transform:scale(2.6);opacity:0;}}
+@media(max-width:820px){.ap-map-bg{width:100%;opacity:.35;}}
+@media (prefers-reduced-motion: reduce){.ap-map-bg .hub-ring{animation:none;opacity:.25;}}
 .hero .container{position:relative;z-index:2;padding-top:60px;padding-bottom:60px;}
 .hero-eyebrow{font-family:'IBM Plex Mono';color:var(--gold);font-size:13px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
 .hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold);}
@@ -383,6 +393,35 @@ td{padding:10px 8px;border-bottom:1px solid var(--grey);}
 <div class="view active" id="view-home">
 
   <section class="hero">
+    <svg class="ap-map-bg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <text x="300" y="34" text-anchor="middle" class="map-caption">Andhra Pradesh · Trade Network</text>
+      <path class="ap-outline" d="M300,50 L380,100 L420,180 L440,260 L460,350 L450,440 L430,530 L400,620 L350,700 L280,760 L200,780 L140,730 L110,650 L120,550 L100,460 L120,370 L160,290 L200,210 L250,120 Z"/>
+      <path class="ap-link" d="M340,510 L170,460 M340,510 L180,630 M340,510 L240,690"/>
+      <g>
+        <circle class="hub-ring" cx="340" cy="510" r="10"/>
+        <circle class="hub-core" cx="340" cy="510" r="7"/>
+        <text x="356" y="506" class="hub-label">Guntur</text>
+        <text x="356" y="520" class="hub-count">9,400+ listings</text>
+      </g>
+      <g>
+        <circle class="hub-ring" cx="170" cy="460" r="8"/>
+        <circle class="hub-core" cx="170" cy="460" r="5.5"/>
+        <text x="184" y="456" class="hub-label">Kurnool</text>
+        <text x="184" y="470" class="hub-count">7,800+ listings</text>
+      </g>
+      <g>
+        <circle class="hub-ring" cx="180" cy="630" r="8"/>
+        <circle class="hub-core" cx="180" cy="630" r="5.5"/>
+        <text x="194" y="626" class="hub-label">Anantapur</text>
+        <text x="194" y="640" class="hub-count">6,100+ listings</text>
+      </g>
+      <g>
+        <circle class="hub-ring" cx="240" cy="690" r="7"/>
+        <circle class="hub-core" cx="240" cy="690" r="5"/>
+        <text x="254" y="686" class="hub-label">Kadapa</text>
+        <text x="254" y="700" class="hub-count">4,900+ listings</text>
+      </g>
+    </svg>
     <div class="container">
       <div class="hero-eyebrow">India's #1 Livestock Marketplace</div>
       <h1 data-i18n="hero_title1">Buy &amp; Sell<br><span class="accent">Healthy Sheep</span><br>Across India</h1>
